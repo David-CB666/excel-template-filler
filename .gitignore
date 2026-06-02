@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs & temp
+*.log
+*.tmp
+temp/
+tmp/
+
+# Output (generated files)
+output/
+
+# Personal config
+AGENTS.md
+SOUL.md
+IDENTITY.md
+USER.md
+MEMORY.md
