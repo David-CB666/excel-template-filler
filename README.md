@@ -1,193 +1,111 @@
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10%2B-blue?logo=python" alt="Python">
+  <img src="https://img.shields.io/badge/License-MIT-yellow" alt="License">
+  <img src="https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey" alt="Platform">
+  <img src="https://img.shields.io/badge/engine-openpyxl%20%7C%20ZIP-orange" alt="Engine">
+</p>
+
 # Excel Template Filler
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-
-> Dual-engine architecture: openpyxl + ZIP | Batch fill Excel templates with perfect image/print-setting preservation
+> **Batch-fill Excel templates while preserving images, print settings, and formatting — things openpyxl alone can't do.**
 
 ---
 
-## Why This Tool?
+## 🎯 The Problem
 
-openpyxl's `copy_worksheet()` loses images, print settings, and binary resources. This tool solves that with a **ZIP engine** that operates on XLSX internals directly — preserving everything openpyxl breaks.
+`openpyxl.copy_worksheet()` silently destroys images, charts, print settings, merged cells, and other binary resources. If your template has a logo or company header, batch-filling with openpyxl alone breaks it.
 
-**Auto-selects the best engine** based on template characteristics. Zero config needed.
+## 💡 The Solution
+
+**Dual-engine architecture** — auto-selects the best engine for your template:
+
+| Engine | Best For | Preserves |
+|--------|----------|-----------|
+| **openpyxl** | Data-only templates (fast) | Formulas, formatting |
+| **ZIP** | Templates with images/print settings | Everything: images, headers, print areas, page breaks |
+
+**Zero config.** The tool scans your template and picks the right engine automatically.
 
 ---
 
-## Quick Start
+## 🚀 Quick Start
 
 ```bash
-# Clone
 git clone https://github.com/David-CB666/excel-template-filler.git
 cd excel-template-filler
-
-# Install dependency
 pip install -r requirements.txt
-
-# Run example
-cd examples
-python example_basic.py
 ```
 
-## Basic Usage
+### Fill a Template (3 lines)
 
 ```python
-import sys
-from pathlib import Path
-sys.path.insert(0, str(Path(__file__).parent / "src"))
+from src.template_filler import TemplateFiller
 
-from template_filler import TemplateFiller
+filler = TemplateFiller("template.xlsx", "data.xlsx")
+filler.fill()  # Auto-detects engine, fills placeholders, saves
+```
 
-# Initialize (auto-detects engine)
-filler = TemplateFiller(
-    data_source="data/sample_data.xlsx",
-    template="templates/sample_template.xlsx"
-)
+### Batch PDF Export
 
-# Check which engine is selected
-print(f"Engine: {'ZIP' if filler.has_images() else 'openpyxl'}")
+```python
+from src.exporters.bq_merger import BQMerger
 
-# Scan placeholders
-placeholders = filler.scan_placeholders()
+merger = BQMerger("master.xlsx", "data.xlsx")
+merger.generate_sheets()  # Creates one sheet per row, exports to PDF
+```
 
-# Fill and export
-output_files = filler.fill_and_export(
-    field_map={
-        "{ID}": "ID",
-        "{Name}": "Name",
-        "{Brand}": "Brand",
-        "{Qty}": "Qty"
-    },
-    output_dir="./output"
-)
+### CLI Mode
+
+```bash
+python src/template_filler.py --template template.xlsx --data data.xlsx
 ```
 
 ---
 
-## Dual-Engine Architecture
-
-| Engine | Best For | Key Advantage |
-|:---|:---|:---|
-| **openpyxl** | Templates without images | Clean API, easy to maintain |
-| **ZIP** | Templates with images | Preserves images, print settings, binary resources |
-
-The `TemplateFiller` auto-detects which engine to use based on template content.
-
----
-
-## Features
-
-| Feature | Description |
-|:---|:---|
-| **Auto engine selection** | Detects template type, picks optimal engine |
-| **Image preservation** | ZIP engine keeps images/print settings intact |
-| **Placeholder scanning** | Finds `{field}` or `{{field}}` patterns automatically |
-| **Batch export** | Excel or PDF output (PDF requires pywin32 on Windows) |
-| **BQ page merging** | Merge application PDFs with Bill of Quantities pages |
-| **Auto-linking** | Match filenames to cells and create hyperlinks |
-| **Data validation** | Verify data source completeness before filling |
-
----
-
-## Directory Structure
+## 📁 Project Structure
 
 ```
 excel-template-filler/
 ├── src/
-│   ├── template_filler.py       # Unified entry (auto engine selection)
-│   ├── engines/
-│   │   ├── base_engine.py       # Engine interface
-│   │   ├── openpyxl_engine.py   # openpyxl engine (no images)
-│   │   └── zip_engine.py        # ZIP engine (images preserved)
+│   ├── engines/               # openpyxl + ZIP engines
+│   │   ├── base_engine.py
+│   │   ├── openpyxl_engine.py
+│   │   └── zip_engine.py      # Preserves images & print settings
 │   ├── exporters/
-│   │   └── bq_merger.py         # BQ page merger
-│   ├── auto_linker.py           # Auto hyperlink creator
-│   ├── file_grabber.py          # Filename grabber
-│   └── utils.py                 # Utilities
+│   │   └── bq_merger.py       # Multi-sheet + PDF export
+│   ├── scanners/
+│   ├── template_filler.py     # Main entry point
+│   └── auto_linker.py         # Smart column linking
 ├── examples/
-│   ├── data/                    # Sample data files
-│   ├── templates/               # Sample templates
-│   ├── example_basic.py         # Basic fill example
-│   ├── example_batch_pdf.py    # Batch PDF example
-│   └── example_auto_link.py    # Auto-link example
-├── pyproject.toml
-├── requirements.txt
-└── README.md
+│   ├── example_basic.py
+│   ├── example_batch_pdf.py
+│   └── data/ + templates/
+├── references/                # Full API docs
+└── tests/
 ```
 
 ---
 
-## Examples
+## 🔧 Features
 
-### Scenario 1: Simple Template Fill
-
-```python
-filler = TemplateFiller("data.xlsx", "template.xlsx")
-output = filler.fill_and_export(
-    field_map={"{ID}": "ID", "{Name}": "Name"},
-    output_dir="./output"
-)
-```
-
-### Scenario 2: Full Pipeline (Fill + BQ Merge)
-
-```python
-# Step 1: Generate filled PDFs
-filler = TemplateFiller("data.xlsx", "template.xlsx")
-filler.fill_and_export(
-    export_format="pdf", output_dir="./pdfs"
-)
-
-# Step 2: Merge with BQ pages
-from exporters.bq_merger import BQMerger
-merger = BQMerger()
-merger.load_bq_pdf("bq_reference.pdf")
-merger.load_zongbiao("data.xlsx")
-merger.match_bq_pages()
-merger.merge_pdfs("./pdfs", "./final_output")
-```
+- ✅ **Dual engine** — openpyxl (speed) + ZIP (perfect fidelity)
+- ✅ **Auto-detection** — scans template, picks best engine
+- ✅ **Placeholder syntax** — `{{column_name}}` in templates
+- ✅ **Batch generation** — one template × N data rows = N output files
+- ✅ **BQ page merging** — merge multiple sheets into a unified workbook
+- ✅ **PDF export** — COM-based export with full print fidelity
+- ✅ **Smart column linking** — auto-matches headers between template and data
 
 ---
 
-## Requirements
+## 📖 Full Documentation
 
-| Requirement | Version |
-|:---|:---|
-| Python | >= 3.10 |
-| openpyxl | >= 3.1.0 |
-
-**Optional:** pywin32 (for PDF export on Windows)
+- **API Reference**: [`references/api-usage.md`](references/api-usage.md)
+- **Engine Deep-Dive**: [`references/engines.md`](references/engines.md)
+- **BQ Merger Guide**: [`references/bq-merger.md`](references/bq-merger.md)
 
 ---
 
-## Limitations
+## 📄 License
 
-1. Placeholders must be in shared strings (normal cell text)
-2. Mixed placeholder + text in a single cell is not supported
-3. BQ merge requires PDFs with text layers (not scanned images)
-
----
-
-## Changelog
-
-### v2.1.0 (2026-06-02)
-- Code refactoring and desensitization
-- Removed internal project references
-- Added pyproject.toml, .gitignore, example data
-
-### v2.0.0 (2026-06-01)
-- Dual-engine architecture (openpyxl + ZIP)
-- Auto engine selection
-- BQ page merging
-- Unified API
-
-### v1.0.0 (2026-06-01)
-- Core: template filling, batch export, auto-linking
-- PDF/Excel output support
-
----
-
-## License
-
-[MIT](https://opensource.org/licenses/MIT)
+MIT © [David-CB666](https://github.com/David-CB666)
