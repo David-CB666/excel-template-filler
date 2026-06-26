@@ -9,6 +9,10 @@
 
 > **Batch-fill Excel templates while preserving images, print settings, and formatting — things openpyxl alone can't do.**
 
+<p align="center">
+  <img src="demo/demo_preview.png" alt="Architecture" width="800">
+</p>
+
 ---
 
 ## 🎯 The Problem
