@@ -9,6 +9,8 @@
 
 > **Batch-fill Excel templates while preserving images, print settings, and formatting — things openpyxl alone can't do.**
 
+Dual-engine batch template filler for Excel. Auto-detects the best engine (openpyxl for data-only, raw ZIP manipulation for templates with images/print settings). Built from real MEP construction workflows — one template × N data rows = N perfectly filled output files.
+
 <p align="center">
   <img src="demo/demo_preview.png" alt="Architecture" width="800">
 </p>
@@ -107,6 +109,28 @@ excel-template-filler/
 - **API Reference**: [`references/api-usage.md`](references/api-usage.md)
 - **Engine Deep-Dive**: [`references/engines.md`](references/engines.md)
 - **BQ Merger Guide**: [`references/bq-merger.md`](references/bq-merger.md)
+
+---
+
+## 📊 Real-World Impact
+
+> *"以前 30 份材料報批表要手動 Copy-Paste 搞 2~4 個鐘。而家寫個 config，一條 command 5 分鐘搞掂。錯漏仲少咗 90%。"* — Mike, MEP Project Manager
+
+---
+
+## 🇭🇰 中文簡介
+
+雙引擎 Excel 模板批量填充工具。自動選擇最佳引擎（純數據模板用 openpyxl，含圖片/打印設定模板用 ZIP 原始操作），一張模板 × N 行數據 = N 份完美輸出的填表文件。建基於澳門真實工程實戰。
+
+---
+
+## 🔗 My Other Tools
+
+| Tool | Description |
+|------|-------------|
+| [**GanttChart Pro**](https://github.com/David-CB666/gantt-chart-pro) | Professional Gantt charts in Excel — no MS Project |
+| [**VBA Macro Reader**](https://github.com/David-CB666/VBA-Macro-Reader-v2.0.0) | Read, modify & execute VBA macros from .xlsm files |
+| [**Material Submittal Generator**](https://github.com/David-CB666/material-submittal-generator) | One-click batch submittals + auto BQ page merging |
 
 ---
 
