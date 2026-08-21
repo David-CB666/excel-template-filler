@@ -21,9 +21,9 @@ Dual-engine batch template filler for Excel. Auto-detects the best engine (openp
 
 ## 📸 Demo
 
-![Template Filler Demo](demo/demo_preview.png)
+![Template Filler Workflow](demo/template_filler_demo.jpg)
 
-*Batch-filled Excel output with images and print settings fully preserved*
+*3-step workflow: Template + Data → Run script (images preserved, 50 sheets generated) → Professional output files*
 
 ## 🎯 The Problem
 
