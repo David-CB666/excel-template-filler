@@ -114,13 +114,13 @@ excel-template-filler/
 
 ## 📊 Real-World Impact
 
-> *"以前 30 份材料報批表要手動 Copy-Paste 搞 2~4 個鐘。而家寫個 config，一條 command 5 分鐘搞掂。錯漏仲少咗 90%。"* — Mike, MEP Project Manager
+> *"以前 30 份材料報批表要手動 Copy-Paste 搞 2~4 個鐘。而家寫個 config，一條 command 5 分鐘搞掂。錯漏仲少咗 90%。"* — David-CB666, MEP Project Manager
 
 ---
 
 ## 🇭🇰 中文簡介
 
-雙引擎 Excel 模板批量填充工具。自動選擇最佳引擎（純數據模板用 openpyxl，含圖片/打印設定模板用 ZIP 原始操作），一張模板 × N 行數據 = N 份完美輸出的填表文件。建基於澳門真實工程實戰。
+雙引擎 Excel 模板批量填充工具。自動選擇最佳引擎（純數據模板用 openpyxl，含圖片/打印設定模板用 ZIP 原始操作），一張模板 × N 行數據 = N 份完美輸出的填表文件。建基於 Macau 真實工程實戰。
 
 ---
 
