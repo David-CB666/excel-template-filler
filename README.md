@@ -1,4 +1,4 @@
-<div align="center">
+﻿<div align="center">
 
 # Excel Template Filler
 
@@ -121,7 +121,7 @@ excel-template-filler/
 
 ## 🇨🇳 中文介绍
 
-双引擎 Excel 模板批量填充工具。自动选择最佳引擎（纯数据模板用 openpyxl，含图片/打印设置模板用 ZIP 原始操作），一张模板 × N 行数据 = N 份完美输出的填表文件。基于澳门真实工程实战。
+双引擎 Excel 模板批量填充工具。自动选择最佳引擎（纯数据模板用 openpyxl，含图片/打印设置模板用 ZIP 原始操作），一张模板 × N 行数据 = N 份完美输出的填表文件。基于真实工程实战。
 
 **核心问题：** `openpyxl.copy_worksheet()` 会静默丢失图片、图表、打印设置、合并单元格等二进制资源。本工具通过 ZIP 引擎直接操作 XML 解决此问题。
 
