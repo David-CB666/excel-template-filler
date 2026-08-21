@@ -7,7 +7,7 @@
 Dual-engine batch template filler for Excel. Auto-detects the best engine (openpyxl for data-only, raw ZIP manipulation for templates with images/print settings). Built from real MEP construction workflows — one template × N data rows = N perfectly filled output files.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python](https://img.shields.io/badge/Python-3.8+-3776AB?logo=python&logoColor=white)](https://python.org)
+[![Python](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)](https://python.org)
 [![openpyxl](https://img.shields.io/badge/openpyxl-3.1+-217346?logo=python&logoColor=white)](https://openpyxl.readthedocs.io)
 [![Stars](https://img.shields.io/github/stars/David-CB666/excel-template-filler?style=social)](https://github.com/David-CB666/excel-template-filler/stargazers)
 [![Forks](https://img.shields.io/github/forks/David-CB666/excel-template-filler?style=social)](https://github.com/David-CB666/excel-template-filler/network/members)
@@ -18,6 +18,12 @@ Dual-engine batch template filler for Excel. Auto-detects the best engine (openp
 </div>
 
 ---
+
+## 📸 Demo
+
+![Template Filler Demo](demo/demo_preview.png)
+
+*Batch-filled Excel output with images and print settings fully preserved*
 
 ## 🎯 The Problem
 
@@ -47,17 +53,21 @@ pip install -r requirements.txt
 ```python
 from src.template_filler import TemplateFiller
 
-filler = TemplateFiller("template.xlsx", "data.xlsx")
+# Note: data_source first, template second
+filler = TemplateFiller(data_source="data.xlsx", template="template.xlsx")
 filler.fill()  # Auto-detects engine, fills placeholders, saves
 ```
 
-### Batch PDF Export
+### Batch PDF Export & BQ Merging
 
 ```python
 from src.exporters.bq_merger import BQMerger
 
-merger = BQMerger("master.xlsx", "data.xlsx")
-merger.generate_sheets()  # Creates one sheet per row, exports to PDF
+merger = BQMerger()
+merger.load_bq_pdf("BQ_tender.pdf")        # Load the BQ tender PDF
+merger.load_zongbiao("master_list.xlsx")    # Load the master tracking sheet
+merger.match_bq_pages()                     # Match submittal items to BQ pages
+merger.merge_pdfs(input_dir="./pdfs/", output_dir="./final_output/")
 ```
 
 ### CLI Mode
