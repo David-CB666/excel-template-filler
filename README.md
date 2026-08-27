@@ -141,6 +141,31 @@ excel-template-filler/
 - 支持批量生成：一张模板 × N 行数据 = N 份输出
 - 内置 PDF 导出与 BQ 页面合并功能
 
+## 📖 Complete Guide
+
+This tool is one of the **7 skill packs** from the **AI Agent Cultivation Field Manual v2.0** — a 13-chapter + 8-appendix handbook that teaches you how to train a generic AI into your domain expert.
+
+**What's in the full manual?**
+
+| Chapter | Topic | Highlight |
+|---------|-------|-----------|
+| Ch.6 | Word | 2-3 days → 30 min (10x+) |
+| Ch.7 | **Excel** ← this tool's chapter | 14 hrs → 30 min (28x) |
+| Ch.8 | PDF | 200 pages → 40 min (25x) |
+| Ch.9 | CAD | Auto-generate arrangement drawings |
+
+**You get with the full version:**
+- 13 chapters + 8 appendices (HTML + PDF + EPUB)
+- 7 installable skill packs (including this one)
+- Real-world case studies with complete code
+- Battle-tested rules + pitfalls from 128 days of AI cultivation
+
+👉 **[Get the full manual →](https://david-cb666.github.io/ai-agent-manual)**
+
+> Free preview: Chapter 1 (5-min self-assessment) is available on the landing page.
+
+---
+
 ## 🔗 My Other Tools
 
 | Tool | Description |
