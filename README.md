@@ -1,4 +1,4 @@
-﻿<div align="center">
+<div align="center">
 
 # Excel Template Filler
 
@@ -12,6 +12,7 @@ Dual-engine batch template filler for Excel. Auto-detects the best engine (openp
 [![Stars](https://img.shields.io/github/stars/David-CB666/excel-template-filler?style=social)](https://github.com/David-CB666/excel-template-filler/stargazers)
 [![Forks](https://img.shields.io/github/forks/David-CB666/excel-template-filler?style=social)](https://github.com/David-CB666/excel-template-filler/network/members)
 [![Last Commit](https://img.shields.io/github/last-commit/David-CB666/excel-template-filler)](https://github.com/David-CB666/excel-template-filler/commits)
+[![Part of the MEP Automation Toolkit](https://img.shields.io/badge/Toolkit-MEP%20automation-1565C0?logo=github&logoColor=white)](https://github.com/David-CB666)
 
 [Quick Start](#-quick-start) · [Features](#-features) · [Documentation](#-documentation) · [中文介绍](#-中文介绍)
 
@@ -191,3 +192,16 @@ MIT © [David-CB666](https://github.com/David-CB666)
 [![Star History Chart](https://api.star-history.com/svg?repos=David-CB666/excel-template-filler&type=Date)](https://star-history.com/#David-CB666/excel-template-filler&Date)
 
 </div>
+
+---
+
+## Related repositories
+
+Part of the **[MEP & construction document automation toolkit](https://github.com/David-CB666)** — open-source tools built from real jobsite workflows.
+
+- **Handbook** — [ai-agent-manual](https://github.com/David-CB666/ai-agent-manual) (8-level AI cultivation for engineers)
+- **Document generation** — [material-approval-pipeline](https://github.com/David-CB666/material-approval-pipeline) · [material-submittal-generator](https://github.com/David-CB666/material-submittal-generator) · [python-docx-photo-grid](https://github.com/David-CB666/python-docx-photo-grid) · [daily-construction-log](https://github.com/David-CB666/daily-construction-log) · [officecli-workflow](https://github.com/David-CB666/officecli-workflow)
+- **Engineering calculation** — [lighting-lux-calculator](https://github.com/David-CB666/lighting-lux-calculator) · [ups-discharge-time-calculator](https://github.com/David-CB666/ups-discharge-time-calculator) · [gantt-chart-pro](https://github.com/David-CB666/gantt-chart-pro) · [electrical-test-report-generator](https://github.com/David-CB666/electrical-test-report-generator)
+- **CAD & drawings** — [electrical-panel-label-plates](https://github.com/David-CB666/electrical-panel-label-plates)
+- **Data & OCR** — [ocr-skill](https://github.com/David-CB666/ocr-skill) · [VBA-Macro-Reader-v2.0.0](https://github.com/David-CB666/VBA-Macro-Reader-v2.0.0)
+- **Compliance & AI ops** — [confined-space-planner](https://github.com/David-CB666/confined-space-planner) · [skill-router](https://github.com/David-CB666/skill-router) · [consulting-services](https://github.com/David-CB666/consulting-services)
